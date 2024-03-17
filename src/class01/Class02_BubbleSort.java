@@ -6,7 +6,7 @@ package class01;
  * @date: 2024/3/16 23:55
  * @desciption: 冒泡排序
  */
-public class Class01_BubbleSort {
+public class Class02_BubbleSort {
     public static void BubbleSort(int[] arr) {
         if (arr == null || arr.length < 2) {
             return;
