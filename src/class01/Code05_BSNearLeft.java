@@ -5,34 +5,29 @@ import java.util.Arrays;
 /**
  * @project: algorithm_java
  * @author: Konnor https://github.com/Konnor-Jade
- * @date: 2024/3/17 22:55
- * @desciption: 二分查找法, 时间复杂度 O(logN)
+ * @date: 2024/3/18 12:28
+ * @desciption: 在数组上,找到满足>=target 的最左的位置
  */
-public class Class04_BinarySearch {
-    public static boolean exits(int[] sortedArr, int num) {
+public class Code05_BSNearLeft {
+    public static int nearestIndex(int[] sortedArr, int target) {
         if (sortedArr == null || sortedArr.length == 0) {
-            return false;
+            return -1; // 表示不存在,错误
         }
         int L = 0;
         int R = sortedArr.length - 1;
-        int mid = 0;
-        // L~R
-        while (L <= R) { // 这个范围上至少有两个数
-            // mid = (L+R)/2;
+        int mid = 0, index = -1;
+        while (L <= R) {
             mid = L + ((R - L) >> 1);
-            // mid = L + (R-L) / 2;
-            if (sortedArr[mid] == num) {
-                return true;
-            } else if (sortedArr[mid] > num) {
+            if (sortedArr[mid] >= target) {
                 // 更新 R
+                index = mid;
                 R = mid - 1;
             } else {
                 // 更新 L
                 L = mid + 1;
             }
         }
-//        return sortedArr[L] == num;
-        return  false;
+        return index;
     }
 
     public static int[] generateRandomArray(int maxSize, int maxValue) {
@@ -44,13 +39,15 @@ public class Class04_BinarySearch {
     }
 
     // for test
-    public static boolean test(int[] sortedArr, int num) {
-        for (int cur : sortedArr) {
-            if (cur == num) {
-                return true;
+    public static int test(int[] sortedArr, int num) {
+
+        for (int i = 0; i < sortedArr.length; i++) {
+            if (sortedArr[i] >= num) { // 这里必须填写大于等于
+                return i;
             }
         }
-        return false;
+
+        return -1;
 //        return Arrays.asList(sortedArr).contains(num);
     }
 
@@ -63,8 +60,8 @@ public class Class04_BinarySearch {
             int[] arr = generateRandomArray(maxSize, maxValue);
             Arrays.sort(arr);
             int value = (int) ((maxValue + 1) * Math.random()) - (int) (maxValue * Math.random());
-            if (test(arr, value) != exits(arr, value)) {
-                System.out.println(arr);
+            if (test(arr, value) != nearestIndex(arr, value)) {
+                System.out.println(Arrays.toString(arr));
                 succeed = false;
                 break;
             }

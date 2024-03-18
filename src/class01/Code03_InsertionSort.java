@@ -8,7 +8,7 @@ import java.util.Arrays;
  * @date: 2024/3/17 10:28
  * @desciption: 快速排序, 快排, O(n ^ 2) + 对数器
  */
-public class Class03_InsertionSort {
+public class Code03_InsertionSort {
     // 从小到大排序
     public static void insertionSort(int[] arr) {
         if (arr == null || arr.length < 2) {
