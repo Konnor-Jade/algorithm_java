@@ -213,7 +213,7 @@ public class Code01_ReverseList {
         return list;
     }
 
-    // TODO: 2024/3/19 8 验证单链表和双链表是否正确反转
+
     public static boolean checkReverseLinkedList(Node head, List<Integer> list) {
         Collections.reverse(list);
         for (int i = 0; i < list.size(); i++) {
@@ -237,7 +237,6 @@ public class Code01_ReverseList {
         return true;
     }
 
-    // TODO: 2024/3/19 main函数
     public static void main(String[] args) {
         int len = 50;
         int value = 100;
