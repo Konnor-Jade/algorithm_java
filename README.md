@@ -19,3 +19,6 @@
 - 最小栈问题
   - Stack:
     - 常用 push pop peek empty search
+- 使用栈实现队列
+  - 使用队列实现栈
+    - 常用队列操作 LinkedList offer poll peek
